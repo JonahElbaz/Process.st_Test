@@ -1,0 +1,73 @@
+
+
+<form name="upload-plugin-form" id="upload-plugin-form" file-upload="options" enctype="multipart/form-data"
+      autocomplete="off"
+      action="https://upload.wistia.com/?access_token=c2775a1a4db062877e43864813bf0c59c1903d603c075229b02117c830493ccd"
+      method="POST">
+    <!-- Add Files Button -->
+    <span class="btn btn-success fileinput-button">
+   <span>Upload File to Wistia</span>
+   <input type="file" name="files" id='fileSelect' multiple="" ng-disabled="disabled">
+   </span>
+
+    <!-- Start Upload Button -->
+    <button type="button" id="submitClick" style="display:none" data-ng-click="submit()"></button>
+
+    <script>
+        //Submit form on click
+        //Timeout due to timing issue. Ideally would set up a promise return
+        $("#fileSelect").change(function () {
+            setTimeout(function(){ $("#submitClick").click(); }, 500);
+            $('#fileSelect').hide();
+            $("#fileSelect").prop('disabled', true);
+        });
+
+    </script>
+
+    <!--Status of files -->
+    <table style="padding-bottom: 100px;">
+        <tr>
+            <td class="success-header">Files that were successfully uploaded</td>
+        </tr>
+        <tr data-ng-repeat="success in successfulFiles">
+            <td>
+                <strong class="success">{{success}}</strong>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Image Preview Area -->
+    <table class="table table-striped files ng-cloak">
+        <tr data-ng-repeat="file in queue" data-ng-class="{'processing': file.$processing()}">
+
+            <td data-ng-switch data-on="!!file.thumbnailUrl">
+                <div class="preview" data-ng-switch-when="true">
+                    <a data-ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}" data-gallery>
+                        <img data-ng-src="{{file.thumbnailUrl}}" alt=""/>
+                    </a>
+                </div>
+                <div class="preview" data-ng-switch-default data-file-upload-preview="file"></div>
+            </td>
+            <td>
+                <p class="name" data-ng-switch data-on="!!file.url">
+          <span data-ng-switch-when="true" data-ng-switch data-on="!!file.thumbnailUrl">
+           <a data-ng-switch-when="true" data-ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}"
+              data-gallery>{{file.name}}</a>
+           <a data-ng-switch-default data-ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}">{{file.name}}</a>
+                        </span>
+                    <span data-ng-switch-default>{{file.name}}</span>
+                </p>
+                <strong data-ng-show="file.error" class="error text-danger">{{file.error}}</strong>
+
+            </td>
+            <td>
+                <p class="size">{{file.size | formatFileSize}}</p>
+                <div class="progress progress-striped active fade" data-ng-class="{pending: 'in'}[file.$state()]" data-file-upload-progress="file.$progress()">
+                    <div class="progress-bar progress-bar-success" data-ng-style="{width: num + '%'}"></div>
+                </div>
+            </td>
+            <td>
+        </tr>
+    </table>
+
+</form>

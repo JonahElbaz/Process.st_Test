@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="uploaderApp">
+<head>
+  <meta charset="utf-8">
+  <!-- jQuery UI CSS -->
+  <link data-require="jqueryui@*" data-semver="1.10.0" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <!--Styles for File Uploader Plugin -->
+  <link rel="stylesheet" href="http://blueimp.github.io/jQuery-File-Upload/css/jquery.fileupload.css" />
+  <link rel="stylesheet" href="http://blueimp.github.io/jQuery-File-Upload/css/jquery.fileupload-ui.css" />
+
+  <script data-require="jquery@*" data-semver="2.1.4" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script data-require="jqueryui@*" data-semver="1.10.0" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
+  <script data-require="angular.js@*" data-semver="1.4.0" src="https://code.angularjs.org/1.5.7/angular.js"></script>
+  <script data-require="angular-route@1.4.0" data-semver="1.4.0" src="https://code.angularjs.org/1.5.7/angular-route.js"></script>
+
+  <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+  <script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+  <!-- The Canvas to Blob plugin is included for image resizing functionality -->
+  <script src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+  <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+  <script src="https://rawgit.com/blueimp/jQuery-File-Upload/master/js/jquery.iframe-transport.js"></script>
+  <!-- The basic File Upload plugin -->
+  <script src="http://blueimp.github.io/jQuery-File-Upload/js/jquery.fileupload.js"></script>
+  <!-- The File Upload processing plugin -->
+  <script src="http://blueimp.github.io/jQuery-File-Upload/js/jquery.fileupload-process.js"></script>
+  <!-- The File Upload image preview & resize plugin -->
+  <script src="http://blueimp.github.io/jQuery-File-Upload/js/jquery.fileupload-image.js"></script>
+  <!-- The File Upload validation plugin -->
+  <script src="http://blueimp.github.io/jQuery-File-Upload/js/jquery.fileupload-validate.js"></script>
+  <!-- The File Upload Angular JS module -->
+  <script src="http://blueimp.github.io/jQuery-File-Upload/js/jquery.fileupload-angular.js"></script>
+  <script src="https://fast.wistia.com/embed/medias/bqw9wuue7z.jsonp" async></script>
+  <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+  <!-- Our Script File -->
+  <script src="wistia-uploader.component.js"></script>
+  <style>
+    .success {
+      color: green;
+    }
+    .success-header {
+      color: yellow;
+    }
+
+    body {
+      padding-left:20px;
+      padding-top: 10px;
+      background-color: #171717;
+    }
+  </style>
+</head>
+
+<body>
+
+<wistia-uploader></wistia-uploader>
+
+</body>
+
+</html>
